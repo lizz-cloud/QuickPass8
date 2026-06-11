@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etEditNombre"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Nombre completo" />
+
+    <EditText
+        android:id="@+id/etEditBoleta"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Boleta" />
+
+    <EditText
+        android:id="@+id/etEditGrupo"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Grupo" />
+
+    <EditText
+        android:id="@+id/etEditTurno"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Turno" />
+
+    <EditText
+        android:id="@+id/etEditSemestre"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Semestre" />
+
+    <EditText
+        android:id="@+id/etEditCarrera"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:hint="Carrera" />
+
+</LinearLayout>

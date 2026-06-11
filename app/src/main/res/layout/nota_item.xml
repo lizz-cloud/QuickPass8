@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="12dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
+
+    <!-- Imagen del post-it (btninotuno, dos o tres) -->
+    <ImageView
+        android:id="@+id/imgNota"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/btninotuno"/>
+
+    <!-- Campo editable de la nota -->
+    <EditText
+        android:id="@+id/editNota"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:background="@null"
+        android:hint="Escribe tu tarea..."
+        android:textSize="14sp"
+        android:textColor="#3A2A5C"
+        android:textColorHint="#9B7AAA"
+        android:minHeight="48dp"
+        android:padding="8dp"/>
+
+    <!-- Botón eliminar -->
+    <ImageButton
+        android:id="@+id/btnEliminar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@null"
+        android:contentDescription="tyfftuytbf"
+        android:src="@android:drawable/ic_delete"
+        android:tint="#FF6B6B"
+        tools:ignore="UseAppTint" />
+
+</LinearLayout>

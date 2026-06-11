@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondomain"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="40dp"
+        android:gravity="center_horizontal">
+
+        <Space android:layout_width="match_parent" android:layout_height="40dp" />
+
+        <!-- Gato + Título -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="110dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Mascota"
+                app:srcCompat="@drawable/gatomjr" />
+
+            <TextView
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Quick&#10;Pass8"
+                android:textColor="#3467AF"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Subtítulo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="··· Bienvenido(a) ···"
+            android:textColor="#1C209F"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="¡Nos alegra verte de nuevo!"
+            android:textColor="#555577"
+            android:textSize="14sp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- CARD: Código QR -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardQR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#487CB8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <!-- Ícono morado redondeado -->
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginEnd="14dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="66dp"
+                        android:layout_height="80dp"
+                        android:background="#F2EDED"
+                        android:contentDescription="QR"
+                        app:srcCompat="@drawable/codqr" />
+                </LinearLayout>
+
+                <!-- Texto -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Código QR"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Escanea para acceder&#10;rápido y seguro."
+                        android:textColor="#E8EAF2"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Flecha -->
+                <ImageButton
+                    android:id="@+id/btniCodigo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/flechair"
+                    android:contentDescription="Ir"
+                    android:onClick="Codigo"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CARD: Tareas -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTareas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#487CB8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginEnd="14dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/tareas"
+                        android:contentDescription="Tareas" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Tareas"
+                        android:textColor="#F9F9FA"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Consulta tus actividades&#10;y pendientes."
+                        android:textColor="#E8EAF2"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btniTarea"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/flechair"
+                    android:contentDescription="Ir"
+                    android:onClick="Tarea"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CARD: Horario -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#487CB8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginEnd="14dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/horario"
+                        android:contentDescription="Horario" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Horario"
+                        android:textColor="#FDFDFD"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Revisa tus clases y&#10;organiza tu día."
+                        android:textColor="#E8EAF2"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btniHorario"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/flechair"
+                    android:contentDescription="Ir"
+                    android:onClick="Horario"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Botón Cerrar sesión -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCerrarSesion"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="220dp"
+            android:layout_height="52dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Cerrar sesión"
+            android:textColor="#E57373"
+            android:textSize="15sp"
+            app:cornerRadius="26dp"
+            app:iconTint="#E57373"
+            app:strokeColor="#E57373"
+            app:strokeWidth="1.5dp"
+            android:onClick="Salir"/>
+
+    </LinearLayout>
+</ScrollView>
