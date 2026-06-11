@@ -2,6 +2,8 @@ package com.example.quickpass8;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,8 +20,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 public class Horario extends AppCompatActivity {
 
+
+    // ya funciona para todos los dispositivos mooviles
     ImageButton btnInicio, btnAgregarFoto;
     ImageView imgHorario;
     TextView tvSinFoto;
@@ -32,19 +40,17 @@ public class Horario extends AppCompatActivity {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                     Uri imagenUri = result.getData().getData();
 
-                    // Persistir permisos de lectura
-                    getContentResolver().takePersistableUriPermission(
-                            imagenUri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION
-                    );
+                    // Copiar imagen al almacenamiento interno de la app, especialmente apara Xiaomi :(
+                    String rutaLocal = copiarImagenInterna(imagenUri);
 
-                    // Guardar URI en SharedPreferences con la boleta como clave
-                    prefs.edit()
-                            .putString("horario_" + boleta, imagenUri.toString())
-                            .apply();
+                    if (rutaLocal != null) {
+                        // Guardar ruta local (no URI externa) en SharedPreferences
+                        prefs.edit()
+                                .putString("horario_" + boleta, rutaLocal)
+                                .apply();
 
-                    // Mostrar imagen
-                    mostrarImagen(imagenUri.toString());
+                        mostrarImagenDesdeRuta(rutaLocal);
+                    }
                 }
             }
     );
@@ -70,9 +76,9 @@ public class Horario extends AppCompatActivity {
         prefs = getSharedPreferences("QuickPass8Prefs", MODE_PRIVATE);
 
         // Cargar foto guardada si existe
-        String uriGuardada = prefs.getString("horario_" + boleta, null);
-        if (uriGuardada != null) {
-            mostrarImagen(uriGuardada);
+        String rutaGuardada = prefs.getString("horario_" + boleta, null);
+        if (rutaGuardada != null) {
+            mostrarImagenDesdeRuta(rutaGuardada);
         }
 
         // Botón agregar foto
@@ -90,9 +96,39 @@ public class Horario extends AppCompatActivity {
         });
     }
 
-    private void mostrarImagen(String uriString) {
-        imgHorario.setImageURI(Uri.parse(uriString));
-        imgHorario.setVisibility(View.VISIBLE);
-        tvSinFoto.setVisibility(View.GONE);
+    // Copia la imagen seleccionada al almacenamiento interno y devuelve su ruta
+    private String copiarImagenInterna(Uri uri) {
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+            if (inputStream == null) return null;
+
+            // Nombre de archivo único por boleta
+            File archivo = new File(getFilesDir(), "horario_" + boleta + ".jpg");
+
+            FileOutputStream outputStream = new FileOutputStream(archivo);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+
+            return archivo.getAbsolutePath();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Muestra la imagen desde una ruta local del almacenamiento interno, para MIUI
+    private void mostrarImagenDesdeRuta(String ruta) {
+        File archivo = new File(ruta);
+        if (archivo.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(ruta);
+            imgHorario.setImageBitmap(bitmap);
+            imgHorario.setVisibility(View.VISIBLE);
+            tvSinFoto.setVisibility(View.GONE);
+        }
     }
 }

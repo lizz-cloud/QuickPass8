@@ -7,19 +7,21 @@ import androidx.annotation.Nullable;
 import com.example.quickpass8.utilidades.Utilidades;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper{
-    public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version){
-        super (context, name, factory, version);
+    public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name,
+                                @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(Utilidades.CREAR_TABLA_ALUMNO);
+        db.execSQL(Utilidades.CREAR_TABLA_ALUMNO); // aluimno
+        db.execSQL(Utilidades.CREAR_TABLA_TAREAS); // tareas
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS Alumno");
-        onCreate((db));
-
+        db.execSQL("DROP TABLE IF EXISTS Alumno"); // alumno
+        db.execSQL("DROP TABLE IF EXISTS Tareas"); // nueva linea para tareas vvs
+        onCreate(db);
     }
 }
